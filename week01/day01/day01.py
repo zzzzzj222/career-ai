@@ -10,4 +10,7 @@ policy_file5={'name': '青年就业见习基地管理办法', 'year': 2024, 'dep
 
 policy_list=[policy_file1, policy_file2, policy_file3, policy_file4, policy_file5]
 sorted_policies = sorted(policy_list, key=lambda x: x['year'])
-print(sorted_policies)
+print("按年份排序后的政策列表:")
+for policy in policy_list:
+    print(f"政策名称: {policy['name']}, 年份: {policy['year']}, 部门: {policy['department']}")
+# print(policy_list)
