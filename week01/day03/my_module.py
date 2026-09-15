@@ -13,14 +13,5 @@ def file_read():
         print(f"中文字符数量: {chinese_chars}")
 
 
-file_read()
-
-
-# 递归计算阶乘
-def jc(n):
-    if n <= 1:
-        return 1
-    else:
-        return n * jc(n - 1)
-
-print(jc(5))
+if __name__ == '__main__':
+    file_read()

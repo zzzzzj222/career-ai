@@ -14,3 +14,19 @@ print("按年份排序后的政策列表:")
 for policy in policy_list:
     print(f"政策名称: {policy['name']}, 年份: {policy['year']}, 部门: {policy['department']}")
 # print(policy_list)
+
+
+list1 = [1, 2, 3, 4, 5,6,7]
+list2 = [4,5,6, 7, 8, 9, 10]
+
+new_list = list1 + list2
+# new_list = [*list1, *list2]
+print("合并后的列表:", new_list)
+
+new_list = list(set(new_list))
+print("去重后的列表:", new_list)
+
+
+list3=[33,44,56,77,73,89,72,31,43]
+res=[i**2 for i in list3 if i%2==0]
+print("列表中偶数的平方:", res)
