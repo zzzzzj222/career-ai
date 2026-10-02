@@ -2,7 +2,9 @@
 import requests
 from lxml import html
 import csv
-
+'''
+爬取 TIOBE 指数网站编程语言top20数据
+'''
 target_url = "https://www.tiobe.com/tiobe-index"
 
 response=requests.get(target_url, timeout=30)
