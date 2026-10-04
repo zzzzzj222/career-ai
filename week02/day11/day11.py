@@ -1,6 +1,6 @@
 """FastAPI 入门演示：路径参数、查询参数和请求体。"""
 
-from fastapi import FastAPI, HTTPException, Query, status
+from fastapi import FastAPI, HTTPException, Query, status,Path
 from pydantic import BaseModel, Field
 
 app = FastAPI(
@@ -34,6 +34,8 @@ def health_check() -> dict[str, str]:
 
 @app.get("/items")
 def list_items(
+    # limit 是查询参数，可通过 GET /items?limit=5 指定；未提供时使用默认值 10。
+    # Query 的 ge/le 分别表示最小值和最大值（均包含边界）；非整数或超出范围时，FastAPI 会返回 422。
     limit: int = Query(default=10, ge=1, le=100, description="最多返回的商品数量"),
 ) -> list[dict[str, Item | int]]:
     return [
@@ -43,7 +45,7 @@ def list_items(
 
 
 @app.get("/items/{item_id}")
-def get_item(item_id: int) -> dict[str, Item | int]:
+async def get_item(item_id: int = Path(..., description="商品ID",gt=0,lt=1000)) -> dict[str, Item | int]:
     item = items.get(item_id)
     if item is None:
         raise HTTPException(
