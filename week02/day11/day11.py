@@ -14,6 +14,7 @@ class Item(BaseModel):
     name: str = Field(min_length=1, description="商品名称")
     price: float = Field(gt=0, description="商品价格")
     description: str | None = Field(default=None, description="商品描述")
+    category: str | None = Field(default=None, description="商品类别")
 
 
 items: dict[int, Item] = {

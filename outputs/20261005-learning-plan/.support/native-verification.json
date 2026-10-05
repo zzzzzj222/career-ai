@@ -1,0 +1,16 @@
+{
+  "native_links": {
+    "sheet2": 133,
+    "sheet3": 43
+  },
+  "frozen_panes": {
+    "xSplit": "1",
+    "ySplit": "5",
+    "topLeftCell": "B6",
+    "activePane": "bottomRight",
+    "state": "frozen"
+  },
+  "status_validation": "\"未开始,进行中,已完成\"",
+  "all_link_targets_match_plan": true,
+  "excel_native_application": "not tested"
+}

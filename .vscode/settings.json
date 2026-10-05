@@ -1,4 +1,5 @@
 {
   "commentTranslate.source": "Bing",
-  "commentTranslate.hover.enabled": true
+  "commentTranslate.hover.enabled": true,
+  "liveServer.settings.port": 5501
 }

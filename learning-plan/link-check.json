@@ -1,0 +1,330 @@
+[
+  {
+    "id": "azure-cost",
+    "url": "https://learn.microsoft.com/zh-cn/azure/well-architected/cost-optimization/principles",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/azure/well-architected/cost-optimization/principles",
+    "title": "成本优化设计原则 - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+    "error": null
+  },
+  {
+    "id": "azure-operations",
+    "url": "https://learn.microsoft.com/zh-cn/azure/well-architected/operational-excellence/principles",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/azure/well-architected/operational-excellence/principles",
+    "title": "卓越运营云设计原则 - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+    "error": null
+  },
+  {
+    "id": "azure-reliability",
+    "url": "https://learn.microsoft.com/zh-cn/azure/well-architected/reliability/principles",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/azure/well-architected/reliability/principles",
+    "title": "可靠性设计原则 - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+    "error": null
+  },
+  {
+    "id": "chroma",
+    "url": "https://docs.trychroma.com/docs/overview/getting-started",
+    "status": 200,
+    "final_url": "https://docs.trychroma.com/docs/overview/getting-started",
+    "title": "Getting Started - Chroma Docs",
+    "error": null
+  },
+  {
+    "id": "chunking",
+    "url": "https://learn.microsoft.com/zh-cn/azure/search/vector-search-how-to-chunk-documents",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/azure/search/vector-search-how-to-chunk-documents",
+    "title": "区块文档 - Azure AI Search | Microsoft Learn",
+    "error": null
+  },
+  {
+    "id": "cv",
+    "url": "https://nationalcareers.service.gov.uk/careers-advice/cv-sections",
+    "status": 200,
+    "final_url": "https://nationalcareers.service.gov.uk/careers-advice/cv-sections",
+    "title": "How to write a CV | Get careers information and advice",
+    "error": null
+  },
+  {
+    "id": "deepseek-errors",
+    "url": "https://api-docs.deepseek.com/zh-cn/quick_start/error_codes",
+    "status": 200,
+    "final_url": "https://api-docs.deepseek.com/zh-cn/quick_start/error_codes/",
+    "title": "错误码 | DeepSeek API Docs",
+    "error": null
+  },
+  {
+    "id": "deepseek-first",
+    "url": "https://api-docs.deepseek.com/zh-cn/",
+    "status": 200,
+    "final_url": "https://api-docs.deepseek.com/zh-cn/",
+    "title": "首次调用 API | DeepSeek API Docs",
+    "error": null
+  },
+  {
+    "id": "deepseek-json",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/json_mode",
+    "status": 200,
+    "final_url": "https://api-docs.deepseek.com/zh-cn/guides/json_mode/",
+    "title": "JSON Output | DeepSeek API Docs",
+    "error": null
+  },
+  {
+    "id": "deepseek-price",
+    "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+    "status": 200,
+    "final_url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "title": "模型 &amp; 价格 | DeepSeek API Docs",
+    "error": null
+  },
+  {
+    "id": "deepseek-stream",
+    "url": "https://api-docs.deepseek.com/zh-cn/api/create-chat-completion",
+    "status": 200,
+    "final_url": "https://api-docs.deepseek.com/zh-cn/api/create-chat-completion/",
+    "title": "Chat Completions API | DeepSeek API Docs",
+    "error": null
+  },
+  {
+    "id": "deepseek-tools",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/tool_calls",
+    "status": 200,
+    "final_url": "https://api-docs.deepseek.com/zh-cn/guides/tool_calls/",
+    "title": "Tool Calls | DeepSeek API Docs",
+    "error": null
+  },
+  {
+    "id": "docker-start",
+    "url": "https://docs.docker.com/get-started/workshop/",
+    "status": 200,
+    "final_url": "https://docs.docker.com/get-started/tutorials/run-an-app/",
+    "title": "Build and share a containerized application | Docker Docs",
+    "error": null
+  },
+  {
+    "id": "fastapi-body",
+    "url": "https://fastapi.tiangolo.com/zh/tutorial/body/",
+    "status": 200,
+    "final_url": "https://fastapi.tiangolo.com/zh/tutorial/body/",
+    "title": "请求体 - FastAPI",
+    "error": null
+  },
+  {
+    "id": "fastapi-cors",
+    "url": "https://fastapi.tiangolo.com/zh/tutorial/cors/",
+    "status": 200,
+    "final_url": "https://fastapi.tiangolo.com/zh/tutorial/cors/",
+    "title": "CORS（跨域资源共享） - FastAPI",
+    "error": null
+  },
+  {
+    "id": "fastapi-docker",
+    "url": "https://fastapi.tiangolo.com/zh/deployment/docker/",
+    "status": 200,
+    "final_url": "https://fastapi.tiangolo.com/zh/deployment/docker/",
+    "title": "容器中的 FastAPI - Docker - FastAPI",
+    "error": null
+  },
+  {
+    "id": "fastapi-errors",
+    "url": "https://fastapi.tiangolo.com/zh/tutorial/handling-errors/",
+    "status": 200,
+    "final_url": "https://fastapi.tiangolo.com/zh/tutorial/handling-errors/",
+    "title": "处理错误 - FastAPI",
+    "error": null
+  },
+  {
+    "id": "fastapi-first",
+    "url": "https://fastapi.tiangolo.com/zh/tutorial/first-steps/",
+    "status": 200,
+    "final_url": "https://fastapi.tiangolo.com/zh/tutorial/first-steps/",
+    "title": "第一步 - FastAPI",
+    "error": null
+  },
+  {
+    "id": "fastapi-test",
+    "url": "https://fastapi.tiangolo.com/zh/tutorial/testing/",
+    "status": 200,
+    "final_url": "https://fastapi.tiangolo.com/zh/tutorial/testing/",
+    "title": "测试 - FastAPI",
+    "error": null
+  },
+  {
+    "id": "github-actions",
+    "url": "https://docs.github.com/zh/actions/use-cases-and-examples/building-and-testing/building-and-testing-python",
+    "status": 200,
+    "final_url": "https://docs.github.com/zh/actions/tutorials/build-and-test-code/python",
+    "title": "构建和测试Python - GitHub 文档",
+    "error": null
+  },
+  {
+    "id": "github-profile",
+    "url": "https://docs.github.com/zh/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme",
+    "status": 200,
+    "final_url": "https://docs.github.com/zh/account-and-profile/how-tos/profile-customization/managing-your-profile-readme",
+    "title": "管理个人资料自述文件 - GitHub 文档",
+    "error": null
+  },
+  {
+    "id": "github-readme",
+    "url": "https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+    "status": 200,
+    "final_url": "https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes",
+    "title": "关于仓库 README 文件 - GitHub 文档",
+    "error": null
+  },
+  {
+    "id": "github-secret",
+    "url": "https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+    "status": 200,
+    "final_url": "https://docs.github.com/zh/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+    "title": "从存储库中删除敏感数据 - GitHub 文档",
+    "error": null
+  },
+  {
+    "id": "interview",
+    "url": "https://nationalcareers.service.gov.uk/careers-advice/interview-advice",
+    "status": 200,
+    "final_url": "https://nationalcareers.service.gov.uk/careers-advice/interview-advice",
+    "title": "Interview tips | Get careers information and advice",
+    "error": null
+  },
+  {
+    "id": "owasp-excess",
+    "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+    "status": 200,
+    "final_url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+    "title": "LLM06:2025 Excessive Agency - OWASP Gen AI Security Project",
+    "error": null
+  },
+  {
+    "id": "owasp-injection",
+    "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+    "status": 200,
+    "final_url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+    "title": "LLM01:2025 Prompt Injection - OWASP Gen AI Security Project",
+    "error": null
+  },
+  {
+    "id": "pandas-io",
+    "url": "https://pandas.pydata.org/docs/user_guide/io.html",
+    "status": 200,
+    "final_url": "https://pandas.pydata.org/docs/user_guide/io.html",
+    "title": "IO tools (text, CSV, HDF5, …) &#8212; pandas 3.0.6 documentation",
+    "error": null
+  },
+  {
+    "id": "pandas-missing",
+    "url": "https://pandas.pydata.org/docs/user_guide/missing_data.html",
+    "status": 200,
+    "final_url": "https://pandas.pydata.org/docs/user_guide/missing_data.html",
+    "title": "Working with missing data &#8212; pandas 3.0.6 documentation",
+    "error": null
+  },
+  {
+    "id": "pytest",
+    "url": "https://docs.pytest.org/en/stable/getting-started.html",
+    "status": 200,
+    "final_url": "https://docs.pytest.org/en/stable/getting-started.html",
+    "title": "Get Started - pytest documentation",
+    "error": null
+  },
+  {
+    "id": "python-logging",
+    "url": "https://docs.python.org/zh-cn/3/howto/logging.html",
+    "status": 200,
+    "final_url": "https://docs.python.org/zh-cn/3/howto/logging.html",
+    "title": "日志指南 &#8212; Python 3.14.8 文档",
+    "error": null
+  },
+  {
+    "id": "python-sqlite",
+    "url": "https://docs.python.org/zh-cn/3/library/sqlite3.html",
+    "status": 200,
+    "final_url": "https://docs.python.org/zh-cn/3/library/sqlite3.html",
+    "title": "sqlite3 --- SQLite 数据库的 DB-API 2.0 接口 &#8212; Python 3.14.8 文档",
+    "error": null
+  },
+  {
+    "id": "python-venv",
+    "url": "https://docs.python.org/zh-cn/3/library/venv.html",
+    "status": 200,
+    "final_url": "https://docs.python.org/zh-cn/3/library/venv.html",
+    "title": "venv --- 虚拟环境的创建 &#8212; Python 3.14.8 文档",
+    "error": null
+  },
+  {
+    "id": "rag-overview",
+    "url": "https://learn.microsoft.com/zh-cn/azure/search/retrieval-augmented-generation-overview",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/azure/search/retrieval-augmented-generation-overview",
+    "title": "RAG 和生成式 AI - Azure AI Search | Microsoft Learn",
+    "error": null
+  },
+  {
+    "id": "solution-role",
+    "url": "https://learn.microsoft.com/zh-cn/training/career-paths/solution-architect",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/training/career-paths/solution-architect",
+    "title": "解决方案架构师培训 | Microsoft Learn",
+    "error": null
+  },
+  {
+    "id": "st-search",
+    "url": "https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+    "status": 200,
+    "final_url": "https://www.sbert.net/examples/sentence_transformer/applications/semantic-search/README.html",
+    "title": "Semantic Search &mdash; Sentence Transformers documentation",
+    "error": null
+  },
+  {
+    "id": "st-similarity",
+    "url": "https://www.sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+    "status": 200,
+    "final_url": "https://www.sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+    "title": "Semantic Textual Similarity &mdash; Sentence Transformers documentation",
+    "error": null
+  },
+  {
+    "id": "star",
+    "url": "https://nationalcareers.service.gov.uk/careers-advice/interview-advice/the-star-method",
+    "status": 200,
+    "final_url": "https://nationalcareers.service.gov.uk/careers-advice/interview-advice/the-star-method",
+    "title": "The STAR method | Get careers information and advice",
+    "error": null
+  },
+  {
+    "id": "streamlit-cache",
+    "url": "https://docs.streamlit.io/develop/concepts/architecture/caching",
+    "status": 200,
+    "final_url": "https://docs.streamlit.io/develop/concepts/architecture/caching",
+    "title": "Caching overview - Streamlit Docs",
+    "error": null
+  },
+  {
+    "id": "streamlit-chat",
+    "url": "https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps",
+    "status": 200,
+    "final_url": "https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/build-conversational-apps",
+    "title": "Build a basic LLM chat app - Streamlit Docs",
+    "error": null
+  },
+  {
+    "id": "streamlit-state",
+    "url": "https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state",
+    "status": 200,
+    "final_url": "https://docs.streamlit.io/develop/api-reference/caching-and-state/st.session_state",
+    "title": "Session State - Streamlit Docs",
+    "error": null
+  },
+  {
+    "id": "well-architected",
+    "url": "https://learn.microsoft.com/zh-cn/azure/well-architected/what-is-well-architected-framework",
+    "status": 200,
+    "final_url": "https://learn.microsoft.com/zh-cn/azure/well-architected/what-is-well-architected-framework",
+    "title": "如何使用 Azure Well-Architected 框架文档 - Microsoft Azure Well-Architected Framework | Microsoft Learn",
+    "error": null
+  }
+]
