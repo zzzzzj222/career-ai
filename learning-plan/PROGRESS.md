@@ -69,3 +69,126 @@ P01–P70 均为“未开始”，表示新计划的验收尚未执行，并非�
 - 每日跟进不再索取P01运行、错误请求或基线报告。ORM围绕概念、独立修改和项目产物跟进。
 
 - 同步结果：Markdown、ORM学习说明、每日跟进规则及22:30自动任务均已更新。原Excel文件被占用，已另存ORM更新版，并将plan.json的workbook_path指向新表。新表统计为P01免验收完成、P02进行中；公式无错误，其他每日记录已比对保留。新增SQLAlchemy官方教程两项；框架如不同则沿用用户实际选择。
+
+## 2026-10-06 每日跟进：异步ORM文章应用
+
+- 核对版本14c45d4及未提交改动。框架已确认：SQLAlchemy 2.x异步API（AsyncSession/async_sessionmaker），数据源为当前MySQL文章库；今后沿用此框架与文章场景，不安排重写SQLite商品示例。
+- 新实现：week02/day12/article_api按database/models/schemas/crud/routes/main分层，包含文章CRUD、分页、字面搜索、统计与时间字段；每请求独立Session，写操作commit后refresh，依赖异常时rollback并关闭会话。
+- 已有实现记录：outputs/article-api-runtime/latest-regression.log及day12-refactor日志显示Ran 1 test / OK；读取了现有日志摘要，未重新运行数据库测试、写入数据库或启动服务。运行记录可支持实现，但不等于用户已独立理解。
+- Excel与plan.json仍为P01用户免验收完成、P02进行中；无新学习耗时、独立说明或完成反馈。本次保留状态及日期，不从代码量或助手可能参与的重构自动判定P02/P03已掌握。
+- 当前待确认的两个重点：commit/refresh/rollback各自作用，尤其commit成功后refresh失败为何不能通过rollback撤销已提交数据；AsyncSession为何每请求一个以及expire_on_commit=False的含义。
+- 针对性补练：每项30–45分钟，沿现有新增文章路径定位代码并用自己的话解释，不补做基础HTTP或错误请求验收。
+- 2026-10-07主要目标：在现有文章应用上讲清异步Session和事务边界，不重写API。45分钟阅读AsyncIO/Session相关小节；60分钟画路由到CRUD到Session到响应的调用链；45分钟解释commit/refresh/rollback与关闭位置；30分钟独立修改一个查询条件并说明影响；30分钟整理记录及卡点。共3.5小时，后30分钟可用于排错。
+- 资料：https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html （AsyncSession与并发使用）；https://docs.sqlalchemy.org/en/20/orm/session_basics.html （事务、提交、回滚与会话生命周期）。
+- 完成标准：能指出各层职责；能解释commit后失败的边界与Session生命周期；能独立说明一次小改动。提交自然语言说明或短笔记即可，不要求HTTP验收记录。
+- 待用户反馈：今天实际投入、哪些代码或修改由自己完成、Session/事务是否仍有卡点。收到后再决定是否直接进入P04的LLM工程补缺。
+
+## 2026-10-06 事务概念反馈与定向复习
+
+- 用户回答：commit提交数据库更改，refresh刷新缓存，rollback回滚；并询问提交成功后rollback是否能撤回提交。已发现两个需巩固的概念：refresh是重新加载对象数据库属性；rollback不能撤销此前成功commit。
+- 已讲解commit成功后refresh失败仍已保存；需要撤销业务结果时应使用新的补偿事务。用户随后要求“多复习这个知识点”，不把表示同意记作独立掌握。
+- 新增TRANSACTION_REVIEW.md：以现有Article场景讲解add/flush/commit/refresh/rollback，四个事务推演与口述自测。本次、下一次跟进及隔2–3个学习日短时复习，计入原有3–4小时；按回答决定是否需要30分钟补练。
+- 本次只读取现有crud.py核对提交顺序；未执行数据库操作或测试，未改业务代码。P02保持进行中，未重生成Excel或更改日期；基础接口免验收继续有效。
+- 用户要求压缩上下文：已保存CONTEXT_BRIEF.md衔接摘要；当前无直接上下文压缩工具，不宣称摘要保存等于应用压缩完成。
+
+## 2026-10-07 事务复习：第一道场景题
+
+- 题目：标题“旧”改成“新”并成功commit，再改成“再改”并flush，最后rollback。
+- 用户回答：“保存标题为新”。该场景最终数据库状态判断正确；用户尚未给出原因，不据单题答案认定整个事务知识点已掌握。
+- 已反馈：第一段更改已提交，第二段flush未提交，因此rollback只撤销第二段更改。
+- 下一道定向练习：A先提交，随后新增B失败并rollback，判断A是否保留并解释事务边界。P02保持进行中，不调整日期或Excel，不增加基础接口验收。
+
+## 2026-10-07 事务复习：第二道场景题
+
+- 用户回答：“a还在，提交后rollback不可撤销”。对A先commit、B新增失败后rollback的场景，数据状态判断与事务边界理由均正确。
+- 该回答支持用户能够解释“rollback不能撤销此前成功提交”的边界；不据此认定flush、refresh、Session生命周期或P02整体已完成。
+- 下一步复习flush：新增文章flush成功并取得ID，但尚未commit时执行rollback，判断文章是否保留以及取得ID是否代表提交。仍以口述推演为主，不运行数据库写入测试，不恢复已豁免的HTTP验收。
+
+## 2026-10-07 事务复习：第三道场景题
+
+- 题目：新增文章flush成功，取得article.id=10，尚未commit时执行rollback。
+- 用户回答：“不在，没有commit就没提交”。对该插入回滚场景的结果与未提交原因均判断正确，支持用户已区分flush执行SQL与commit提交；取得ID不代表提交成功。
+- 此前成功提交不可回滚、flush后未提交可回滚两个边界已有口述证据。refresh的准确作用与Session生命周期仍待独立说明，P02继续进行中。
+- 下一步围绕数据库生成的时间字段，询问refresh(article)如何更新内存对象及其是否提交事务；不新增实际数据库操作或基础接口验收。
+
+## 2026-10-07 事务复习：第四道场景题
+
+- 用户解释refresh：“从数据库中重新读取文章，不会再次提交事务”。准确说明了重新读取与不提交两个关键作用；补充讲解其读取结果会更新对应ORM对象的属性。
+- commit/rollback边界、flush不等于提交、refresh读取而非提交，均已有正确口述回答。记录为这些概念的口述复习通过，不等于独立代码修改、Session生命周期或P02整体完成。
+- 下一步以新增A和B必须同时成功的场景复习同一事务的原子性及提交位置。继续采用口述推演，不要求已豁免的基础HTTP验收。
+
+## 2026-10-07 事务复习：第五道综合题
+
+- 题目：新增A后commit，再新增B后commit，能否保证A、B必须一起成功，否则都不保存。
+- 用户回答：“不能，commit应该放在最后”。正确判断分开提交不能满足要求，并指出应统一提交；补充强调必须是同一个事务，提交前失败时rollback撤销该事务的更改。
+- 本组口述复习通过：已提交更改不受后续rollback撤销、flush与commit区别、refresh重新读取不提交、同一事务统一提交。此结论限于口述推演，不替代独立代码修改或完整ORM验收。
+- 后续不立即重复整组题；下次短时换场景复习，隔2–3个学习日再检查。接下来进入每请求一个AsyncSession及expire_on_commit=False，P02仍进行中；未改Excel、日期或业务代码。
+
+## 2026-10-07 下一阶段建议：从FastAPI收尾转入LLM应用
+
+- 用户自报FastAPI接近尾声，询问下一步。结合已通过的事务口述复习与现有P04–P14清单，建议收尾后进入现有DeepSeek调用的工程化，再做结构化输出与最小RAG。
+- FastAPI收尾集中于每请求一个AsyncSession、expire_on_commit=False、现有Article应用调用链及一次自主小修改；沿用MySQL与异步ORM，不重写清单中的早期SQLite商品占位示例。
+- 下一个学习日主目标：完成一个可复用、能正常结束且能分类处理失败的LLM调用模块（P04）。建议30分钟Session收尾、45分钟官方资料、90分钟流式封装、30分钟可控故障推演、15分钟记录，共3.5小时；排错计入各时段。
+- 完成标准沿用P04：真实调用输出非空并正常结束；超时/限流有限重试，认证失败不重试；提交模块与reports/P04-llm-errors.md。没有真实调用条件时可先做模拟，但真实验证保持待确认。
+- 后续顺序：P05结构化输出，P06明确项目业务边界与P07复盘，再P08–P14 Embedding、分块、持久化检索、带来源回答与RAG接口。用户自报接近尾声不等于P02/P03已完成，保留状态与日期，未重生成Excel。
+
+## 本次自动跟进：Session巩固与LangChain起步（事件北京时间2026-10-08 00:17）
+
+- 已读README、FOLLOW_UP、plan.json、进度记录及当前ORM更新版Excel全部70行自报字段。Excel的P02为已完成，plan.json仍为进行中；其他自报状态、日期、备注、证据、实际小时未发现差异。保留两边原值，不覆盖Excel或自动合并完成状态。
+- 最新用户反馈：调用链已清楚，免去调用链口述；Session生命周期还需要巩固，目前准备进入LangChain。事务五题口述通过继续有效；Session已讲解但用户明确仍需巩固，不能记为已掌握。未收到实际学习耗时或自主代码修改反馈。
+- Git HEAD仍为14c45d4。git status因当前工具工作区条件无法读取，改用HEAD树与相关文件内容哈希比较；文章API分层实现与测试仍在，旧sql_test.py缺失，local_test.py和day12.py与HEAD不同。不能仅凭相对HEAD差异断言是自上次跟进的新学习改动。现有latest-regression.log显示Ran 1 test / OK，时间仍为2026-10-06，本次未重跑测试、启动服务或写数据库。
+- 读取代码AST确认deepseek_test.py已有timeout=60、max_retries=1且stream=True，当前实际调用方法为client.responses.create；文件修改时间为2026-09-20。文件名不能证明它当前直接调用DeepSeek聊天接口。进入LangChain时先核对用户实际服务提供方、接口与环境变量名称，不沿用错误接口假设，不输出凭据。
+- 最重要的待补项只有Session生命周期。S01建议30分钟：10分钟阅读Session Basics的上下文管理与事务生命周期，10分钟推演SessionFactory→查询→commit→refresh→close，10分钟自述。复验：说明commit结束事务但Session可继续使用、refresh可启动新事务、关闭不会自动提交、并发请求不能共享同一AsyncSession。不再要求调用链口述或基础HTTP验收。
+- 下一个学习日主要目标：LangChain基础模型调用，为P04的可靠LLM调用与后续RAG服务。总计3.5小时：30分钟S01；45分钟Models、Messages、ChatDeepSeek官方文档；75分钟自行完成消息输入、invoke和stream；30分钟核对超时与有限重试并做一个可控失败示例；30分钟记录及排错。不叠加完整Agent课程或整套应用重写。
+- 提交物：一个自行编写的LangChain最小调用文件及简短笔记，可接续reports/P04-llm-errors.md；解释消息角色、invoke与stream的输出差别，能独立修改一条消息；正常调用能结束，失败能够解释，不把模拟称为真实验证。未具备真实调用条件时先模拟并保留待真实验证项。
+- 官方资料本次已打开核对：https://docs.sqlalchemy.org/en/20/orm/session_basics.html（沿用既有资料）；https://docs.langchain.com/oss/python/langchain/models；https://docs.langchain.com/oss/python/langchain/messages；https://docs.langchain.com/oss/python/integrations/chat/deepseek。DeepSeek适配器仅在用户实际使用DeepSeek聊天服务时沿用，不自动更换模型或调用付费接口。
+- 当前只追加跟进记录与用户最新覆盖规则；P02自报/验收差异未解决，不重生成Excel、不重写完成状态或计划日期，保留P编号与baseline日期。LangChain作为P04的实现路径，不作为额外一套课程。
+
+## 2026-10-08 每日跟进：LangChain流式调用已出现
+
+- 已读README、FOLLOW_UP、plan.json、PROGRESS及Excel全部70行自报字段。最新用户要求继续有效：基础HTTP免验收、调用链免复述、Session仍需巩固，准备进入LangChain。
+- 新证据：week02/day13/day13.py修改时间为2026-10-08 18:04，定义main，读取环境变量中的凭据，使用langchain_openai.ChatOpenAI，含system/human角色消息和model.stream迭代输出；timeout=60、max_retries=1。凭据与连接地址未输出。只确认代码存在，不据代码内容断言用户独立完成或真实调用通过。
+- Git最新提交仍为14c45d4。未运行学习代码、启动服务、调用付费接口或安装依赖；未观察到P04运行报告。已经向用户补问day13运行是否完整结束、实际耗时、卡点与Session尚不清楚的位置，不推断用户没有运行或没有学习。
+- 事务五题口述通过；Session生命周期仍待用户理解反馈。Excel P02已完成与plan.json P02进行中这一差异仍在，其他手填状态/日期/备注/证据/实际小时无新差异；保留双方，不自动改完成状态或失败状态，不重生成Excel或顺延日期。
+- 最重要的补练：Session生命周期30分钟，读Session Basics相关小节并推演commit→refresh→close。复验：解释commit结束事务但Session仍可用、refresh可开始新事务、close不会提交未保存更改。资料：https://docs.sqlalchemy.org/en/20/orm/session_basics.html 。
+- 次日主要目标：在现有day13示例上说明消息角色与invoke/stream的区别，完成一次自主小修改。3.5小时安排：30分钟Session补练，45分钟Messages/Models资料，60分钟对比invoke与stream，45分钟检查超时/重试与一个可控失败，30分钟排错及记录。沿用实际ChatOpenAI兼容接口，不自动更换为ChatDeepSeek，也不重写已有超时配置。
+- 资料：https://docs.langchain.com/oss/python/langchain/messages；https://docs.langchain.com/oss/python/langchain/models。提交物：现有day13代码的小修改及自然语言记录；完成标准：能解释消息角色、两种输出形式，指出自己修改之处及效果；提供真实运行的结束情况或明确模拟/待验证，并通过上述Session复验。运行和耗时反馈收到后再调整，不堆额外任务。
+
+## 2026-10-08 用户反馈：Session面试式复习
+
+- 用户明确day13目前只是LangChain最简单的调用示例，没有遇到困难；记录为自报无卡点，不推断完整运行、自主修改或学习耗时。
+- 用户要求通过接近面试的题目巩固Session生命周期。调整为逐题互动：用户先回答，再点评准确性、解释遗漏并追问；暂不先给标准答案，不重复调用链口述或基础HTTP验收。
+- 第一题采用SessionFactory上下文中add→commit→refresh→退出上下文的场景，考查Session与事务的不同结束时点、refresh的新事务和关闭时的资源清理。随后按回答推进到并发会话隔离、连接池、expire_on_commit与异常清理。
+- 本次仅确认复习方式和day13无卡点反馈；Session理解尚未答题复验，不改变P02验收状态、Excel自报值或计划日期。
+
+## 2026-10-08 Session面试题一：回答与补缺
+
+- 用户正确回答commit成功后Session没有关闭、随后refresh开启新事务、退出上下文不会撤销此前已提交文章。对清理的描述为“清理缓存，关闭连接”，并明确Session与事务的生命周期区别尚不清楚。
+- 纠正重点：Session关闭清理的是ORM对象跟踪状态，回滚仍活动的事务并释放其连接；在通常的连接池配置下连接归还池中，不等于断开物理连接，也不是统一清理应用缓存。
+- 本轮补讲Session是组织数据库工作及对象状态的管理对象，事务是一次原子提交/回滚的操作范围。同一请求的Session通常先创建、最后关闭；期间可以先后经历多个事务，commit/rollback结束当前事务但不关闭Session。
+- 用“查询→修改→commit→再次查询→退出上下文”复验事务数量及Session数量。保留正确答案证据，生命周期整体区别仍待用户独立说明，不调整完成状态或日期。
+
+## 2026-10-08 Session生命周期复验通过
+
+- 对同一请求同一Session中“查询→修改→commit→再次查询”的场景，用户回答：“经历2个，commit完第一次事务已经完成，后面查询是第二次事务”。事务数量与边界理由均正确。
+- 该回答支持用户已理解同一个Session可以先后经历多个事务；反馈补充该场景只有一个Session，两个事务。记录这一场景口述复验通过，不据此认定连接池、并发隔离或P02整体已验收完成。
+- 下一道面试题考查两个并发请求是否可以共享全局AsyncSession，以及请求A回滚对请求B的潜在影响。保持逐题问答，不重复基础HTTP或调用链验收。
+
+## 2026-10-08 Session并发隔离面试题
+
+- 用户回答A与B共用Session时：“a执行rollback之后，会把b新增也回滚”。已识别事务状态共享造成误回滚的核心风险。
+- 补充条件：B新增尚未提交且与A属于同一事务时，会随该事务回滚；B此前已成功提交的更改不会被撤销。并发共享AsyncSession还可能产生会话状态冲突，因此不能假定所有并发执行顺序都有相同结果。
+- 本题记录为共用Session的回滚风险已识别，继续巩固事务条件；不改变整体验收状态。下一道面试题考查每请求一个Session是否等于每请求建立新的物理连接，以及关闭Session后连接通常归还连接池。
+
+## 2026-10-08 Session与连接池面试题通过
+
+- 用户回答：“不需要，session关闭后，连接释放到连接池里”。正确区分每请求创建Session与每请求新建物理连接，也纠正了此前将Session关闭描述为断开连接的表述。
+- 本题口述通过。补充：执行SQL需要连接时通常从池借用，创建Session不等于立即借用连接；commit/rollback通常也会释放该事务占用的连接，不必一直等到Session关闭。
+- 下一题围绕expire_on_commit=False与对象属性是否自动反映数据库最新值，继续逐题问答。Session/事务边界、并发共享风险与池化连接复用已有证据，尚不据此替代独立修改或P02/P03整体验收。
+
+## 2026-10-08 expire_on_commit面试题：概念补讲
+
+- 用户回答参数含义“前问不太懂”，同时正确说明“不保证，需使用refresh方法刷新”。记录为已知道内存属性不保证数据库最新值，提交后自动过期的机制仍需巩固。
+- 本轮补讲：默认True使commit后ORM对象属性过期，后续访问过期属性可能触发重新读取；False保留已加载属性的可读值，不在commit时自动标为过期。异步代码不能把属性访问时的隐式数据库IO当成可靠用法，False配合显式await refresh是常见配置，但并不解决所有延迟加载问题。
+- refresh重新读取当前事务可见的数据库状态；不宣称忽略事务隔离保证绝对实时值。下一道短题复验False配置下commit后读取已加载title是读取内存还是自动查库，并解释原因。
+- Session总体面试练习仍在进行，未改变Excel或计划完成状态，不重复已通过的事务题。

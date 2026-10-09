@@ -1,0 +1,235 @@
+2026-10-06 20:12:09,873 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-10-06 20:12:09,874 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 20:12:09,876 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-10-06 20:12:09,876 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 20:12:09,877 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-10-06 20:12:09,877 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 20:12:09,879 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:12:09,879 INFO sqlalchemy.engine.Engine DESCRIBE `sqlalchemy_demo`.`articles`
+2026-10-06 20:12:09,879 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 20:12:09,883 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     127.0.0.1:58139 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58139 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58139 - "GET /openapi.json HTTP/1.1" 200 OK
+2026-10-06 20:13:21,874 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,877 INFO sqlalchemy.engine.Engine SELECT count(articles.id) AS count_1 
+FROM articles
+2026-10-06 20:13:21,877 INFO sqlalchemy.engine.Engine [generated in 0.00025s] ()
+INFO:     127.0.0.1:58139 - "GET /articles/article/count HTTP/1.1" 200 OK
+2026-10-06 20:13:21,881 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,888 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,889 INFO sqlalchemy.engine.Engine INSERT INTO articles (title, author, create_time, update_time) VALUES (%s, %s, now(), now())
+2026-10-06 20:13:21,889 INFO sqlalchemy.engine.Engine [generated in 0.00027s] ('http_test_c394f80dc6a64663acc0b95c0d7a2db9%_ 中文', 'HTTP测试作者')
+2026-10-06 20:13:21,891 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 20:13:21,895 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,897 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,897 INFO sqlalchemy.engine.Engine [generated in 0.00030s] (40,)
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 201 Created
+2026-10-06 20:13:21,899 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,901 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,902 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,902 INFO sqlalchemy.engine.Engine [generated in 0.00030s] (40,)
+INFO:     127.0.0.1:58139 - "GET /articles/40 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,904 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,905 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,906 INFO sqlalchemy.engine.Engine INSERT INTO articles (title, author, create_time, update_time) VALUES (%s, %s, now(), now())
+2026-10-06 20:13:21,906 INFO sqlalchemy.engine.Engine [cached since 0.01685s ago] ('http_test_c394f80dc6a64663acc0b95c0d7a2db9XY 中文', 'HTTP测试作者')
+2026-10-06 20:13:21,907 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 20:13:21,911 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,911 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,912 INFO sqlalchemy.engine.Engine [cached since 0.01465s ago] (41,)
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 201 Created
+2026-10-06 20:13:21,913 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,914 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,915 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,915 INFO sqlalchemy.engine.Engine [cached since 0.01333s ago] (41,)
+INFO:     127.0.0.1:58139 - "GET /articles/41 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,916 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,917 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,917 INFO sqlalchemy.engine.Engine SELECT count(articles.id) AS count_1 
+FROM articles
+2026-10-06 20:13:21,917 INFO sqlalchemy.engine.Engine [cached since 0.04081s ago] ()
+INFO:     127.0.0.1:58139 - "GET /articles/article/count HTTP/1.1" 200 OK
+2026-10-06 20:13:21,920 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,921 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,922 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles ORDER BY articles.id 
+ LIMIT %s, %s
+2026-10-06 20:13:21,922 INFO sqlalchemy.engine.Engine [generated in 0.00021s] (0, 10)
+INFO:     127.0.0.1:58139 - "GET /articles?offset=0&limit=10 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,923 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,924 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,924 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles ORDER BY articles.id 
+ LIMIT %s, %s
+2026-10-06 20:13:21,925 INFO sqlalchemy.engine.Engine [cached since 0.003029s ago] (10, 10)
+INFO:     127.0.0.1:58139 - "GET /articles?offset=10&limit=10 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,926 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,927 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,928 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 20:13:21,928 INFO sqlalchemy.engine.Engine [generated in 0.00025s] ('http/_test/_c394f80dc6a64663acc0b95c0d7a2db9/%/_', 10)
+INFO:     127.0.0.1:58139 - "GET /articles/search?q=http_test_c394f80dc6a64663acc0b95c0d7a2db9%25_ HTTP/1.1" 200 OK
+2026-10-06 20:13:21,930 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,931 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,931 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 20:13:21,932 INFO sqlalchemy.engine.Engine [cached since 0.003593s ago] ('http/_test/_c394f80dc6a64663acc0b95c0d7a2db9does-not-exist', 10)
+INFO:     127.0.0.1:58139 - "GET /articles/search?q=http_test_c394f80dc6a64663acc0b95c0d7a2db9does-not-exist HTTP/1.1" 200 OK
+2026-10-06 20:13:21,933 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,934 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,935 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 20:13:21,935 INFO sqlalchemy.engine.Engine [cached since 0.007409s ago] ('FastAPI', 10)
+INFO:     127.0.0.1:58139 - "GET /articles/search?q=FastAPI HTTP/1.1" 200 OK
+2026-10-06 20:13:21,937 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,938 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,939 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 20:13:21,939 INFO sqlalchemy.engine.Engine [cached since 0.01102s ago] ('中文搜索', 10)
+INFO:     127.0.0.1:58139 - "GET /articles/search?q=%E4%B8%AD%E6%96%87%E6%90%9C%E7%B4%A2 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,941 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,942 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,942 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 20:13:21,942 INFO sqlalchemy.engine.Engine [cached since 0.01435s ago] ('100/%', 10)
+INFO:     127.0.0.1:58139 - "GET /articles/search?q=100%25 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,944 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,945 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,945 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 20:13:21,945 INFO sqlalchemy.engine.Engine [cached since 0.01724s ago] ('article/_api', 10)
+INFO:     127.0.0.1:58139 - "GET /articles/search?q=article_api HTTP/1.1" 200 OK
+2026-10-06 20:13:21,947 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,947 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,948 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,948 INFO sqlalchemy.engine.Engine [cached since 0.04644s ago] (40,)
+INFO:     127.0.0.1:58139 - "GET /articles/40 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,949 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:58139 - "GET /articles/0 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles/-1 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles/not-int HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles?offset=-1 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles?limit=0 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles?limit=101 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles/search HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "GET /articles/search?q= HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "POST /articles/create HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 422 Unprocessable Content
+2026-10-06 20:13:21,980 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,980 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,981 INFO sqlalchemy.engine.Engine [cached since 0.07911s ago] (40,)
+INFO:     127.0.0.1:58139 - "GET /articles/40 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,982 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,983 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,983 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,983 INFO sqlalchemy.engine.Engine [cached since 0.08201s ago] (40,)
+2026-10-06 20:13:21,985 INFO sqlalchemy.engine.Engine UPDATE articles SET title=%s, author=%s, update_time=%s WHERE articles.id = %s
+2026-10-06 20:13:21,986 INFO sqlalchemy.engine.Engine [generated in 0.00027s] ('http_test_c394f80dc6a64663acc0b95c0d7a2db9 updated', '新作者', datetime.datetime(2026, 10, 6, 20, 13, 21, 985867), 40)
+2026-10-06 20:13:21,987 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 20:13:21,991 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,992 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,992 INFO sqlalchemy.engine.Engine [cached since 0.09497s ago] (40,)
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,993 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,994 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,995 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,995 INFO sqlalchemy.engine.Engine [cached since 0.09319s ago] (40,)
+INFO:     127.0.0.1:58139 - "GET /articles/40 HTTP/1.1" 200 OK
+2026-10-06 20:13:21,996 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 20:13:21,997 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:21,997 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:21,997 INFO sqlalchemy.engine.Engine [cached since 0.09577s ago] (40,)
+2026-10-06 20:13:21,999 INFO sqlalchemy.engine.Engine DELETE FROM articles WHERE articles.id = %s
+2026-10-06 20:13:21,999 INFO sqlalchemy.engine.Engine [generated in 0.00026s] (40,)
+2026-10-06 20:13:22,000 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     127.0.0.1:58139 - "DELETE /articles/40 HTTP/1.1" 204 No Content
+2026-10-06 20:13:22,005 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:22,006 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:22,006 INFO sqlalchemy.engine.Engine [cached since 0.1046s ago] (40,)
+2026-10-06 20:13:22,007 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:58139 - "GET /articles/40 HTTP/1.1" 404 Not Found
+2026-10-06 20:13:22,010 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:22,010 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:22,010 INFO sqlalchemy.engine.Engine [cached since 0.109s ago] (40,)
+2026-10-06 20:13:22,011 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:58139 - "PUT /articles/40 HTTP/1.1" 404 Not Found
+2026-10-06 20:13:22,014 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:22,014 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:22,014 INFO sqlalchemy.engine.Engine [cached since 0.1127s ago] (40,)
+2026-10-06 20:13:22,015 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:58139 - "DELETE /articles/40 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58139 - "PATCH /articles/40 HTTP/1.1" 405 Method Not Allowed
+2026-10-06 20:13:22,018 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:22,018 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:22,018 INFO sqlalchemy.engine.Engine [cached since 0.1169s ago] (40,)
+2026-10-06 20:13:22,019 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:58139 - "DELETE /articles/40 HTTP/1.1" 404 Not Found
+2026-10-06 20:13:22,022 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:22,022 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 20:13:22,022 INFO sqlalchemy.engine.Engine [cached since 0.1208s ago] (41,)
+2026-10-06 20:13:22,024 INFO sqlalchemy.engine.Engine DELETE FROM articles WHERE articles.id = %s
+2026-10-06 20:13:22,024 INFO sqlalchemy.engine.Engine [cached since 0.02504s ago] (41,)
+2026-10-06 20:13:22,025 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     127.0.0.1:58139 - "DELETE /articles/41 HTTP/1.1" 204 No Content
+2026-10-06 20:13:22,030 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 20:13:22,030 INFO sqlalchemy.engine.Engine SELECT count(articles.id) AS count_1 
+FROM articles
+2026-10-06 20:13:22,031 INFO sqlalchemy.engine.Engine [cached since 0.154s ago] ()
+INFO:     127.0.0.1:58139 - "GET /articles/article/count HTTP/1.1" 200 OK
+2026-10-06 20:13:22,033 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:58139 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57561 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57561 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57379 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57379 - "GET /openapi.json HTTP/1.1" 200 OK

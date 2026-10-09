@@ -1,0 +1,133 @@
+test_article_contract (test_articles.ArticleApiTests.test_article_contract) ... 2026-10-06 18:56:28,590 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2026-10-06 18:56:28,590 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 18:56:28,592 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2026-10-06 18:56:28,592 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 18:56:28,592 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2026-10-06 18:56:28,593 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 18:56:28,594 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,594 INFO sqlalchemy.engine.Engine DESCRIBE `sqlalchemy_demo`.`articles`
+2026-10-06 18:56:28,594 INFO sqlalchemy.engine.Engine [raw sql] ()
+2026-10-06 18:56:28,602 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 18:56:28,619 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,620 INFO sqlalchemy.engine.Engine INSERT INTO articles (title, author, create_time, update_time) VALUES (%s, %s, now(), now())
+2026-10-06 18:56:28,620 INFO sqlalchemy.engine.Engine [generated in 0.00018s] ('refactor_8a795c3db8c24ee2b5fd5b89ff527467%_ target', '测试作者')
+2026-10-06 18:56:28,626 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 18:56:28,633 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,635 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,635 INFO sqlalchemy.engine.Engine [generated in 0.00015s] (5,)
+2026-10-06 18:56:28,636 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,638 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,639 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,639 INFO sqlalchemy.engine.Engine [generated in 0.00013s] (5,)
+2026-10-06 18:56:28,640 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,642 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,643 INFO sqlalchemy.engine.Engine INSERT INTO articles (title, author, create_time, update_time) VALUES (%s, %s, now(), now())
+2026-10-06 18:56:28,643 INFO sqlalchemy.engine.Engine [cached since 0.02239s ago] ('refactor_8a795c3db8c24ee2b5fd5b89ff527467XY target', '测试作者')
+2026-10-06 18:56:28,644 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 18:56:28,650 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,650 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,650 INFO sqlalchemy.engine.Engine [cached since 0.01544s ago] (6,)
+2026-10-06 18:56:28,651 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,654 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,654 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,654 INFO sqlalchemy.engine.Engine [cached since 0.01513s ago] (6,)
+2026-10-06 18:56:28,655 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,657 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,657 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,657 INFO sqlalchemy.engine.Engine [cached since 0.01823s ago] (5,)
+2026-10-06 18:56:28,658 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,660 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,660 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles ORDER BY articles.id 
+ LIMIT %s, %s
+2026-10-06 18:56:28,661 INFO sqlalchemy.engine.Engine [generated in 0.00012s] (0, 1)
+2026-10-06 18:56:28,662 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,664 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,665 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE (articles.title LIKE concat('%%', %s, '%%') ESCAPE '/') ORDER BY articles.id 
+ LIMIT %s
+2026-10-06 18:56:28,665 INFO sqlalchemy.engine.Engine [generated in 0.00012s] ('refactor/_8a795c3db8c24ee2b5fd5b89ff527467/%/_', 10)
+2026-10-06 18:56:28,666 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,684 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,684 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,684 INFO sqlalchemy.engine.Engine [cached since 0.04524s ago] (5,)
+2026-10-06 18:56:28,685 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,687 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,688 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,688 INFO sqlalchemy.engine.Engine [cached since 0.04886s ago] (5,)
+2026-10-06 18:56:28,690 INFO sqlalchemy.engine.Engine UPDATE articles SET title=%s, author=%s, update_time=%s WHERE articles.id = %s
+2026-10-06 18:56:28,690 INFO sqlalchemy.engine.Engine [generated in 0.00016s] ('refactor_8a795c3db8c24ee2b5fd5b89ff527467 updated', '新作者', datetime.datetime(2026, 10, 6, 18, 56, 28, 689992), 5)
+2026-10-06 18:56:28,692 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 18:56:28,696 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,696 INFO sqlalchemy.engine.Engine SELECT articles.id, articles.title, articles.author, articles.create_time, articles.update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,697 INFO sqlalchemy.engine.Engine [cached since 0.06194s ago] (5,)
+2026-10-06 18:56:28,697 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,699 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,700 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,700 INFO sqlalchemy.engine.Engine [cached since 0.06081s ago] (5,)
+2026-10-06 18:56:28,700 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,703 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,703 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,703 INFO sqlalchemy.engine.Engine [cached since 0.06411s ago] (5,)
+2026-10-06 18:56:28,705 INFO sqlalchemy.engine.Engine DELETE FROM articles WHERE articles.id = %s
+2026-10-06 18:56:28,705 INFO sqlalchemy.engine.Engine [generated in 0.00013s] (5,)
+2026-10-06 18:56:28,706 INFO sqlalchemy.engine.Engine COMMIT
+2026-10-06 18:56:28,712 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,712 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,712 INFO sqlalchemy.engine.Engine [cached since 0.07306s ago] (5,)
+2026-10-06 18:56:28,713 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,715 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,715 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,715 INFO sqlalchemy.engine.Engine [cached since 0.0763s ago] (5,)
+2026-10-06 18:56:28,716 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,718 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,718 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,718 INFO sqlalchemy.engine.Engine [cached since 0.07932s ago] (5,)
+2026-10-06 18:56:28,719 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,721 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,721 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,721 INFO sqlalchemy.engine.Engine [cached since 0.08214s ago] (5,)
+2026-10-06 18:56:28,722 INFO sqlalchemy.engine.Engine ROLLBACK
+2026-10-06 18:56:28,723 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2026-10-06 18:56:28,724 INFO sqlalchemy.engine.Engine SELECT articles.id AS articles_id, articles.title AS articles_title, articles.author AS articles_author, articles.create_time AS articles_create_time, articles.update_time AS articles_update_time 
+FROM articles 
+WHERE articles.id = %s
+2026-10-06 18:56:28,724 INFO sqlalchemy.engine.Engine [cached since 0.08487s ago] (6,)
+2026-10-06 18:56:28,725 INFO sqlalchemy.engine.Engine DELETE FROM articles WHERE articles.id = %s
+2026-10-06 18:56:28,725 INFO sqlalchemy.engine.Engine [cached since 0.02011s ago] (6,)
+2026-10-06 18:56:28,725 INFO sqlalchemy.engine.Engine COMMIT
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.178s
+
+OK
