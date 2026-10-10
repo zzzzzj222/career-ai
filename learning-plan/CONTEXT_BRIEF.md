@@ -41,3 +41,11 @@
 - 并发面试题用户指出共用Session时A的rollback会影响B新增；已识别核心风险，补充了“B未提交且同一事务”的条件及并发状态冲突。下一题：每请求一个Session是否每次创建物理连接，关闭Session后连接去哪；继续巩固归还连接池的准确说法。
 - 连接池题用户正确回答每请求Session不要求新建物理连接，关闭后连接归还连接池；此前关闭连接的表述已通过口述纠正。下一题考查expire_on_commit=False的意义及提交后内存对象是否自动保持最新。
 - expire_on_commit题用户已正确说不保证最新、需要refresh，但参数控制提交后属性过期的含义还不懂。已补讲True自动过期与False保留已加载属性，下一题复验False下commit后读取title是否自动查库；不把已讲解直接记作掌握。
+
+## 2026-10-09 最新进度
+
+- HEAD=f275139；day13增加DashScopeEmbeddings的embed_query/embed_documents，day14新增FewShotPromptTemplate电商意图识别。用户自报已实际运行，正确解释format生成提示词、stream流式输出模型回答；助手未独立运行。实际耗时未提供。
+- Session/事务与连接池口述已通过；expire_on_commit=False参数含义补讲后复验仍待回答。
+- 次日重点：在现有Few-shot示例明确固定类别和未知兜底，用4条新输入做小评测；3.5小时计划包含30分钟Session补练。详细安排见PROGRESS最新条目。
+- 不重做简单调用、不复述调用链、不据代码和提交数算掌握；P02的Excel已完成与plan进行中继续保留。完整P04/P05验收尚未满足，不自动改状态或日期。
+- 最新：用户正确回答expire_on_commit=False下已加载title从内存读取，补充精确机制后，本组Session核心概念口述复习通过。次日不再强制30分钟Session补练，仅5分钟换场景复习，余25分钟作为记录/排错缓冲；主要目标继续day14意图分类小评测。完整ORM独立修改仍未验收，不自动合并P02完成状态。

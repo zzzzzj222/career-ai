@@ -34,12 +34,12 @@ def main() -> None:
     # print(response.content)
     
 
-
-# 流式输出
-    res=model.stream([
+    conversation = [[
         ("system", "用中文简洁回答。"),
         ("human", "你是什么模型？"),
-    ])
+    ]]
+# 流式输出
+    res=model.stream(conversation)
     for chunk in res:
         print(chunk.content, end="", flush=True)
 
