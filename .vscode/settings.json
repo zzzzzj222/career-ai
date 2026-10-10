@@ -1,5 +1,6 @@
 {
   "commentTranslate.source": "Bing",
   "commentTranslate.hover.enabled": true,
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "inlineChat.defaultModel": "GPT-6.1 Sol (openai)"
 }
