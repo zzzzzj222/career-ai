@@ -41,7 +41,7 @@ def main() -> None:
 # 流式输出
     res=model.stream(conversation)
     for chunk in res:
-        print(chunk.content, end="", flush=True)
+       print(chunk.content, end="", flush=True)
 
 
 

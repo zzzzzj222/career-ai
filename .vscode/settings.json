@@ -2,5 +2,11 @@
   "commentTranslate.source": "Bing",
   "commentTranslate.hover.enabled": true,
   "liveServer.settings.port": 5501,
-  "inlineChat.defaultModel": "GPT-6.1 Sol (openai)"
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.suggestOnTriggerCharacters": true
 }
