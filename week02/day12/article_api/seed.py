@@ -4,7 +4,7 @@ import asyncio
 
 from sqlalchemy import select
 
-from .database import SessionFactory, create_tables, engine
+from .database import create_tables, dispose_engine, get_session_factory
 from .models import Article
 from .schemas import ArticleInput
 
@@ -50,7 +50,8 @@ async def seed_articles() -> int:
         for index, title in enumerate(TEST_TITLES)
     ]
 
-    async with SessionFactory() as session, session.begin():
+    session_factory = get_session_factory()
+    async with session_factory() as session, session.begin():
         result = await session.execute(
             select(Article.title, Article.author).where(Article.title.in_(TEST_TITLES))
         )
@@ -72,7 +73,7 @@ async def main() -> None:
         added = await seed_articles()
         print(f"测试数据生成完成：新增 {added} 篇，已有样例 {len(TEST_TITLES) - added} 篇。")
     finally:
-        await engine.dispose()
+        await dispose_engine()
 
 
 if __name__ == "__main__":

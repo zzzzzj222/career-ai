@@ -19,6 +19,7 @@ def main() -> None:
     # 百炼支持 OpenAI 兼容接口，因此可以使用 ChatOpenAI。
     model = ChatOpenAI(
         model="qwen3.7-plus",
+        extra_body={"thinking":{"type":"disabled"}},
         api_key=api_key,
         base_url=os.getenv("DASHSCOPE_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"),
         temperature=0.7,  # 越低回答越稳定，越高回答越灵活。

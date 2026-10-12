@@ -15,4 +15,11 @@ model=ChatDeepSeek(
     max_retries=1,
 )
 
-rprint(model.profile)
+# 保留最近n轮对话
+def keep_recent_messages(messages,max_pairs = 3):
+    '''保留最近的n轮对话
+    max_pairs:保留对话的轮数
+    '''
+    # 分离system和对话消息
+    
+    pass

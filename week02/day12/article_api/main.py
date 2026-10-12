@@ -5,7 +5,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from .database import create_tables, engine
+from .database import create_tables, dispose_engine
 from .routes import router
 
 
@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
         await create_tables()
         yield
     finally:
-        await engine.dispose()
+        await dispose_engine()
 
 
 app = FastAPI(title="FastAPI 路由与异步 ORM 演示", lifespan=lifespan)

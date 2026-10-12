@@ -40,7 +40,10 @@ day12/
 访问 `http://127.0.0.1:8000/docs` 查看接口文档。
 在 VS Code 中也可以选择“启动 Day12 文章 API”，按 F5 启动调试。
 `main.py` 使用包内相对导入，应通过上述模块命令启动。
-数据库连接仍使用原有本机 MySQL 配置，可通过 `DATABASE_URL` 环境变量覆盖。
+数据库连接串只从环境变量 `DATABASE_URL` 读取，代码中不再内置账号口令；
+本机可把连接串写入仓库根目录的 `.env`；VS Code 集成终端已通过
+`python.terminal.useEnvFile` 自动加载该文件。
+缺少配置时启动会提示“未设置环境变量 DATABASE_URL”，不会使用任何默认连接。
 启动前需准备好数据库；启动时只创建缺失的表，不会删除记录，也不会迁移已有表结构。
 
 ## 接口与事务
@@ -79,7 +82,7 @@ FastAPI/SQLAlchemy/MySQL/Python 关键词，以及 `%`、`_` 等搜索特殊字�
 ## 回归检查
 
 在仓库根目录运行。检查使用配置的 MySQL 数据库，创建带随机标记的文章并在结束后清理。
-可先通过 `DATABASE_URL` 指定测试数据库。
+可先通过 `DATABASE_URL` 指定测试数据库，未设置时整套检查会整体跳过。
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r week02/day12/requirements-dev.txt

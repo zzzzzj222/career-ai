@@ -8,5 +8,55 @@
     "comments": "off",
     "strings": "off"
   },
-  "editor.suggestOnTriggerCharacters": true
+  "editor.suggestOnTriggerCharacters": true,
+  "python.terminal.useEnvFile": true,
+  "accessibility.signals.chatEditModifiedFile": {
+    "sound": "off"
+  },
+  "accessibility.signals.codeActionApplied": {
+    "sound": "off"
+  },
+  "accessibility.signals.clear": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.codeActionTriggered": {
+    "sound": "off"
+  },
+  "accessibility.signals.confetti": {
+    "sound": "off"
+  },
+  "accessibility.signals.diffLineDeleted": {
+    "sound": "off"
+  },
+  "accessibility.signals.editsKept": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.lineHasError": {
+    "sound": "on"
+  },
+  "accessibility.signals.lineHasFoldedArea": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.lineHasWarning": {
+    "sound": "on"
+  },
+  "accessibility.signals.save": {
+    "sound": "always",
+    "announcement": "always"
+  },
+  "accessibility.signals.terminalBell": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.terminalQuickFix": {
+    "sound": "off",
+    "announcement": "off"
+  },
+  "accessibility.signals.terminalCommandSucceeded": {
+    "sound": "off",
+    "announcement": "off"
+  }
 }

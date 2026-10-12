@@ -77,7 +77,7 @@ def create_model() -> ChatOpenAI:
         base_url=os.getenv(
             "DASHSCOPE_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"
         ),
-        temperature=0.3,  # 越低回答越稳定，越高回答越灵活。
+        temperature=0.5,  # 越低回答越稳定，越高回答越灵活。
         timeout=60,
         max_retries=1,
     )
@@ -121,6 +121,7 @@ async def async_example(model: ChatOpenAI) -> None:
 async def async_batch_example(model: ChatOpenAI) -> None:
     """异步批量调用：并发请求多个 Prompt，等待全部结果。"""
     print("\n=== abatch：异步批量调用 ===")
+    # 使用列表推导式，把 user_inputs 中的每条输入填入 few_shot_prompt 模板，生成一个提示词列表。
     prompts = [few_shot_prompt.format(user_input=text) for text in user_inputs]
 
     # abatch 内部并发调度异步请求，结果同样保持输入顺序。

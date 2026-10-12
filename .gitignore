@@ -1,0 +1,10 @@
+# 环境变量与密钥：不要提交真实密钥
+.env
+.env.local
+
+# Python 虚拟环境
+.venv/
+venv/
+
+# Jupyter 检查点
+.ipynb_checkpoints/

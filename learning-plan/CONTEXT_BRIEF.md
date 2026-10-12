@@ -46,3 +46,10 @@
 - 先用45分钟概念时段补调用模式，通过后做4条新分类输入（3条明确意图、1条无关输入）、允许类别/未知兜底、预期与实际结果、一次独立修改说明；不堆任务。
 - 参考3.5小时：概念45分钟、模式对比75分钟、分类校验30分钟、独立修改/解释30分钟、记录/排错30分钟。
 - 资料：https://docs.langchain.com/oss/python/langchain/models ; https://docs.langchain.com/oss/python/langchain/messages ; https://reference.langchain.com/python/langchain-core/prompts/few_shot/FewShotPromptTemplate ; https://docs.sqlalchemy.org/en/20/orm/session_basics.html
+
+## 2026-10-12 最新接续（覆盖上文待答题）
+
+- ainvoke、abatch+max_concurrency=2、astream+async for的用途选择已答对；batch的输入顺序返回、batch_as_completed的完成顺序产出及等待不等于失败已口述复验。避免重复整组时间线。
+- 待复验：await不能把同步invoke变成异步的客户端原因；用户结论正确、曾混淆为服务端同步，已补讲尚未复验。
+- HEAD=5a3c4fe；day15当前只实例化ChatDeepSeek并打印model.profile，无真实模型调用代码。day13工作区新增thinking配置；day14修改temperature并增加注释。仅代码存在，运行和自主修改效果待反馈。
+- 下一主目标仍是day14四条新输入的意图分类评测（含一条无关输入），3.5小时预算见PROGRESS.md最新条目。实际耗时、评测输出和修改解释待补；P02状态差异保留，Session核心口述通过有效。
