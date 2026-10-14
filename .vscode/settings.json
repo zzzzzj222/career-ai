@@ -58,5 +58,6 @@
   "accessibility.signals.terminalCommandSucceeded": {
     "sound": "off",
     "announcement": "off"
-  }
+  },
+  "editor.defaultFormatter": "yzhang.markdown-all-in-one"
 }

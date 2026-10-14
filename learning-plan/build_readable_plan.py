@@ -25,7 +25,7 @@ lines = [
     "",
     "每天先完成一个主要目标。建议分配：阅读 30–45 分钟、实操 90–120 分钟、验收与记录 30–45 分钟，余下时间排错。复盘日以补齐本周缺口为主。",
     "",
-    "当前已推进到ORM。P01基础接口按用户确认免验收，P02进行中；基础接口运行结果与错误请求无需补交。后续按各日目标、概念解释、独立修改与项目产物跟进。",
+    f"当前学习主线：{plan.get('current_stage', 'ORM')}。P01基础接口按用户确认免验收；正式验收状态与学习主线分开记录，按概念解释、独立修改与项目产物跟进。",
     "",
     "相关文件：[首日操作说明](P01_START.md) · [进度记录](PROGRESS.md) · [跟进和调整规则](FOLLOW_UP.md)",
     "",
@@ -34,6 +34,19 @@ lines = [
     "| 周次 | 重点 | 本周关口 | 原 84 天关联 |",
     "| --- | --- | --- | --- |",
 ]
+focus = plan.get('current_focus')
+if focus:
+    current = [f"## 当前优先安排（{focus['updated_on']}调整）", "", f"**主目标：** {focus['goal']}", "", f"总预算 {focus['hours']} 小时；对应实际代码：{', '.join(focus['repo_files'])}。", ""]
+    current += [f"- {item['minutes']}分钟：{item['task']}" for item in focus['tasks']]
+    current += ["", f"**提交物：** {focus['deliverable']}", "", "**当前验收标准**", ""]
+    current += [f"- {item}" for item in focus['acceptance']]
+    current += ["", "**资料**", ""]
+    current += [f"- [{item['title']}]({item['url']})" for item in focus['resources']]
+    current += ["", "**延期项**", ""]
+    current += [f"- {item['topic']}：{item['status']}。恢复条件：{item['resume_trigger']} 当前不阻断上述主线。" for item in plan.get('deferred_reviews', [])]
+    current += ["", "以下P01–P70保留原编号、日期和正式验收记录；当前实际优先顺序以本节及最新用户反馈为准。", ""]
+    insert_at = lines.index("## 每周交付")
+    lines[insert_at:insert_at] = current
 for week in plan["weeks"]:
     lines.append(f"| {week['week']} | {week['title']} | {week['gate']} | {week['original_days']} |")
 

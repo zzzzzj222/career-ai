@@ -1,4 +1,6 @@
-"""Few-shot 提示词：流式、批量、异步调用示例。
+"""
+提示词模板
+Few-shot 提示词：流式、批量、异步调用示例。
 
 运行全部示例：.venv/Scripts/python.exe week02/day14/day14.py
 单独运行：在命令后加 --mode stream / batch / async / async-batch

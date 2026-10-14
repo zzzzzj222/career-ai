@@ -1,8 +1,6 @@
-"""通过 LangChain 调用阿里云百炼 Qwen。
+"""
+通过 LangChain 调用阿里云百炼 Qwen。
 
-运行：.venv/Scripts/python.exe week02/day13/day13.py
-依赖：python -m pip install langchain-openai
-配置：环境变量 DASHSCOPE_API_KEY，可选 DASHSCOPE_BASE_URL（按百炼地域设置）。
 """
 
 import os
@@ -37,7 +35,7 @@ def main() -> None:
 
     conversation = [[
         ("system", "用中文简洁回答。"),
-        ("human", "你是什么模型？"),
+        ("user", "你是什么模型？"),
     ]]
 # 流式输出
     res=model.stream(conversation)

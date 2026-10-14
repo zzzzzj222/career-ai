@@ -2433,9 +2433,81 @@
     "timezone": "Asia/Shanghai",
     "status": "ACTIVE"
   },
-  "current_stage": "ORM（用户确认）",
+  "current_stage": "LangChain 消息内容块与多模态（week02/day16）",
   "acceptance_exemptions": [
     "基础接口运行结果和错误请求：用户于2026-10-05明确免验收，不再索取P01请求记录。"
   ],
-  "workbook_path": "outputs/20261005-learning-plan/AI解决方案工程师_动态学习清单_ORM更新版.xlsx"
+  "workbook_path": "outputs/20261005-learning-plan/AI解决方案工程师_动态学习清单_ORM更新版.xlsx",
+  "current_focus": {
+    "updated_on": "2026-10-14",
+    "source": "用户：历史截取安排往后延吧，先按照目前项目进度来",
+    "repo_files": [
+      "week02/day16/day16.py",
+      "week02/day16/content_blocks_demo.py"
+    ],
+    "goal": "理解消息内容块的输入与输出，能独立构造消息、提取正文并解释模型能力边界。",
+    "hours": 3.5,
+    "tasks": [
+      {
+        "minutes": 45,
+        "task": "阅读Messages的content/content_blocks、文本与图片消息格式。"
+      },
+      {
+        "minutes": 75,
+        "task": "沿现有离线示例自主修改文本及图片输入，检查底层content和标准内容块。"
+      },
+      {
+        "minutes": 45,
+        "task": "构造文本与混合响应，只提取text正文并记录预期/实际结果；明确标记模拟。"
+      },
+      {
+        "minutes": 15,
+        "task": "解释消息格式可表示图片与实际模型能理解图片的区别，记录真实调用是否已验证。"
+      },
+      {
+        "minutes": 30,
+        "task": "整理修改说明、实际耗时及排错记录。"
+      }
+    ],
+    "deliverable": "day16自主小修改及输入/输出结构记录；实际调用结果或明确标注仅离线模拟。",
+    "acceptance": [
+      "能解释content与content_blocks的差别，并构造文本/图片组合消息。",
+      "能按type提取text正文，混合响应中不将reasoning等其他块混入最终正文。",
+      "能指出一次自主修改及效果，区分格式成立、模型能力支持、真实运行通过。",
+      "模拟响应明确标为模拟；不因代码存在认定图片调用成功。"
+    ],
+    "resources": [
+      {
+        "title": "LangChain Messages",
+        "url": "https://docs.langchain.com/oss/python/langchain/messages"
+      },
+      {
+        "title": "LangChain Models",
+        "url": "https://docs.langchain.com/oss/python/langchain/models"
+      }
+    ],
+    "next_direction": "沿实际进度衔接可靠调用、结构化业务输出与RAG；历史管理待后续模块补齐。"
+  },
+  "deferred_reviews": [
+    {
+      "id": "history-turn-boundary",
+      "topic": "完整轮次截取及长对话上下文管理",
+      "status": "待补（用户明确延期）",
+      "deferred_on": "2026-10-14",
+      "previous_suggested_date": "2026-10-15",
+      "new_planned_date": null,
+      "resume_trigger": "后续短期记忆/上下文管理环节开始前；周复盘依据实际进度重新排期。",
+      "blocks_current_focus": false,
+      "known_gap": "现有2N消息截取在当前user已入列时可能留下孤立assistant；未修复，不算完成。"
+    }
+  ],
+  "progress_conflicts": [
+    {
+      "id": "P02",
+      "field": "status",
+      "plan_value": "进行中",
+      "workbook_value": "已完成",
+      "resolution": "保留双方，待明确合并依据；不重复催问。"
+    }
+  ]
 }

@@ -8,3 +8,9 @@ venv/
 
 # Jupyter 检查点
 .ipynb_checkpoints/
+
+# Node.js 依赖
+node_modules/
+
+# 学习清单生成时的临时脚本、预览与中间文件
+outputs/**/.support/
