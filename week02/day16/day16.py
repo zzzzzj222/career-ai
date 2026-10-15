@@ -5,6 +5,8 @@ import base64
 import os
 from langchain_core.messages import AIMessage, HumanMessage
 
+'''多模态调用演示'''
+
 #  从.env文件加载环境变量
 load_dotenv(override=True)
 api_key = os.getenv("DEEPSEEK_API_KEY")
