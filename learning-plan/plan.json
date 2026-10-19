@@ -2433,60 +2433,60 @@
     "timezone": "Asia/Shanghai",
     "status": "ACTIVE"
   },
-  "current_stage": "LangChain 消息内容块与多模态（week02/day16）",
+  "current_stage": "LangChain 双工具调用实践（week02/day18，运行待验）",
   "acceptance_exemptions": [
     "基础接口运行结果和错误请求：用户于2026-10-05明确免验收，不再索取P01请求记录。"
   ],
   "workbook_path": "outputs/20261005-learning-plan/AI解决方案工程师_动态学习清单_ORM更新版.xlsx",
   "current_focus": {
-    "updated_on": "2026-10-14",
-    "source": "用户：历史截取安排往后延吧，先按照目前项目进度来",
+    "updated_on": "2026-10-18",
+    "source": "按用户2026-10-14要求跟随项目进度；依据10-17口述通过与10-18代码检查调整当前练习，不等同正式P任务通过。",
     "repo_files": [
-      "week02/day16/day16.py",
-      "week02/day16/content_blocks_demo.py"
+      "week02/day18/day18.py",
+      "week02/day18/day18_lianxi.py"
     ],
-    "goal": "理解消息内容块的输入与输出，能独立构造消息、提取正文并解释模型能力边界。",
+    "goal": "用乘法和模拟天气两个工具验证工具选择、执行与结果回传，所有结果可对应且不把模拟当实时数据。",
     "hours": 3.5,
     "tasks": [
       {
-        "minutes": 45,
-        "task": "阅读Messages的content/content_blocks、文本与图片消息格式。"
-      },
-      {
-        "minutes": 75,
-        "task": "沿现有离线示例自主修改文本及图片输入，检查底层content和标准内容块。"
+        "minutes": 30,
+        "task": "阅读工具定义、绑定、工具调用请求和ToolMessage关联。"
       },
       {
         "minutes": 45,
-        "task": "构造文本与混合响应，只提取text正文并记录预期/实际结果；明确标记模拟。"
+        "task": "自主补齐工具名、参数、调用ID、执行结果与回传消息的记录；天气输出明确标模拟。"
+      },
+      {
+        "minutes": 90,
+        "task": "分别验证乘法、模拟天气及明确要求两项的混合问题；模拟和真实执行分别记录，保存未达预期情况。"
       },
       {
         "minutes": 15,
-        "task": "解释消息格式可表示图片与实际模型能理解图片的区别，记录真实调用是否已验证。"
+        "task": "说明一次自主修改、工具选择结果与ToolMessage如何对应；不重复已通过的整组口述题。"
       },
       {
         "minutes": 30,
-        "task": "整理修改说明、实际耗时及排错记录。"
+        "task": "整理实际耗时、结果及排错记录。"
       }
     ],
-    "deliverable": "day16自主小修改及输入/输出结构记录；实际调用结果或明确标注仅离线模拟。",
+    "deliverable": "三组输入的预期工具与实际轨迹，包含tool_calls、应用执行、ToolMessage、最终回答；标明模拟/真实及实际耗时。",
     "acceptance": [
-      "能解释content与content_blocks的差别，并构造文本/图片组合消息。",
-      "能按type提取text正文，混合响应中不将reasoning等其他块混入最终正文。",
-      "能指出一次自主修改及效果，区分格式成立、模型能力支持、真实运行通过。",
-      "模拟响应明确标为模拟；不因代码存在认定图片调用成功。"
+      "乘法工具的参数和结果能独立核对，调用ID与回传结果对应。",
+      "天气函数当前返回固定字符串，必须标为模拟，不作为真实天气查询能力通过。",
+      "三类输入的预期与实际选择可核对；两条HumanMessage不直接视为两项工具均完成。",
+      "能指出自主修改及效果；代码存在、Notebook保存输出、离线模拟、真实运行、独立掌握分别记录。"
     ],
     "resources": [
       {
-        "title": "LangChain Messages",
-        "url": "https://docs.langchain.com/oss/python/langchain/messages"
+        "title": "LangChain Tools",
+        "url": "https://docs.langchain.com/oss/python/langchain/tools"
       },
       {
         "title": "LangChain Models",
         "url": "https://docs.langchain.com/oss/python/langchain/models"
       }
     ],
-    "next_direction": "沿实际进度衔接可靠调用、结构化业务输出与RAG；历史管理待后续模块补齐。"
+    "next_direction": "先收取两工具实践证据，再按实际进度衔接可靠调用、结构化输出与RAG；历史管理继续延期待补。"
   },
   "deferred_reviews": [
     {
@@ -2509,5 +2509,32 @@
       "workbook_value": "已完成",
       "resolution": "保留双方，待明确合并依据；不重复催问。"
     }
-  ]
+  ],
+  "focus_history": [
+    {
+      "changed_on": "2026-10-18",
+      "previous_stage": "LangChain 消息内容块与多模态（week02/day16）",
+      "previous_goal": "理解消息内容块的输入与输出，能独立构造消息、提取正文并解释模型能力边界。",
+      "reason": "按用户要求跟随实际代码进度；基础工具流程口述已通过，双工具实现出现，实际运行仍待验。"
+    }
+  ],
+  "pending_evidence": [
+    {
+      "topic": "day16消息内容块及真实图片调用",
+      "status": "待验证；不因后续文件出现自动通过"
+    },
+    {
+      "topic": "day17模板与独立批量输入",
+      "status": "Notebook保存模板展开输出；自主理解、独立批量意图和效果待反馈"
+    },
+    {
+      "topic": "day18工具调用",
+      "status": "基础流程口述通过；运行、独立修改、五阶段实践轨迹和耗时待验证"
+    }
+  ],
+  "workbook_sync": {
+    "status": "待同步（源工作簿被其他程序占用）",
+    "updated_on": "2026-10-18",
+    "pending_focus": "day18双工具实践；原表及手填值保留"
+  }
 }

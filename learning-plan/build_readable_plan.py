@@ -45,6 +45,8 @@ if focus:
     current += ["", "**延期项**", ""]
     current += [f"- {item['topic']}：{item['status']}。恢复条件：{item['resume_trigger']} 当前不阻断上述主线。" for item in plan.get('deferred_reviews', [])]
     current += ["", "以下P01–P70保留原编号、日期和正式验收记录；当前实际优先顺序以本节及最新用户反馈为准。", ""]
+    if plan.get("workbook_sync"):
+        current += ["**Excel同步状态：** " + plan["workbook_sync"]["status"] + "；当前重点以本节为准，原表与手填值保留。", ""]
     insert_at = lines.index("## 每周交付")
     lines[insert_at:insert_at] = current
 for week in plan["weeks"]:
