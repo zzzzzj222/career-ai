@@ -19,6 +19,14 @@ else:
     a=openpyxl.load_workbook(source,data_only=False)
     b=openpyxl.load_workbook(candidate,data_only=False)
     allowed={('进度总览','A3'),('进度总览','B9'),('每日清单','A3')}
+    if '--complete-p05' in sys.argv:
+        p05_row=next(i for i,row in enumerate(a['每日清单'].iter_rows(min_row=6,max_row=75,values_only=True),6) if row[0]=='P05')
+        allowed.update({('每日清单',f'{col}{p05_row}') for col in ['H','I','J','O']})
+        expected=next(x for x in p['days'] if x['id']=='P05')
+        assert b['每日清单'][f'H{p05_row}'].value==expected['status']=='已完成'
+        assert str(b['每日清单'][f'I{p05_row}'].value)[:10]==expected['actual_date']
+        assert b['每日清单'][f'J{p05_row}'].value==expected['notes']
+        assert b['每日清单'][f'O{p05_row}'].value==expected['evidence']
     def norm(v):
         return v.replace("'每日清单'",'每日清单') if isinstance(v,str) and v.startswith('=') else v
     def style(c):
@@ -46,6 +54,12 @@ else:
     a.close();b.close()
     shutil.copy2(source,SUPPORT/'workbook-before-focus.xlsx')
     shutil.copy2(candidate,source)
+if '--complete-p05' in sys.argv:
+    p.pop('workbook_sync',None)
+    plan_path.write_text(json.dumps(p,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    subprocess.run([sys.executable,'-X','utf8',str(ROOT/'learning-plan/build_readable_plan.py')],check=True)
+    print('P05 completion saved; all unrelated workbook values and native features preserved.')
+    raise SystemExit
 days_before=copy.deepcopy(p['days'])
 old=p.get('current_focus',{})
 p.setdefault('focus_history',[]).append({'changed_on':'2026-10-18','previous_stage':p.get('current_stage'),'previous_goal':old.get('goal'),'reason':'按用户要求跟随实际代码进度；基础工具流程口述已通过，双工具实现出现，实际运行仍待验。'})

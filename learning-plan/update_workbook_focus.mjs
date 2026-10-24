@@ -10,9 +10,19 @@ const p=JSON.parse((await fs.readFile(path.join(root,'learning-plan/plan.json'),
 const wb=await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(root,p.workbook_path)));
 const before=process.argv.includes('--preview');
 if(!before){
- wb.worksheets.getItem('进度总览').getRange('A3').values=[['当前 day18：双工具调用实践；口述已通过，运行待验。每晚22:30跟进。']];
- wb.worksheets.getItem('进度总览').getRange('B9').values=[['当前验收：工具选择、调用ID、执行与回传记录；天气示例标模拟。历史截取延期。']];
- wb.worksheets.getItem('每日清单').getRange('A3').values=[['当前重点：day18 双工具调用；分别记录模拟/真实结果。历史截取延期，黄色手填进度保留。']];
+ wb.worksheets.getItem('进度总览').getRange('A3').values=[[p.current_focus.workbook_cues.overview]];
+ wb.worksheets.getItem('进度总览').getRange('B9').values=[[p.current_focus.workbook_cues.acceptance]];
+ wb.worksheets.getItem('每日清单').getRange('A3').values=[[p.current_focus.workbook_cues.daily]];
+ if(process.argv.includes('--complete-p05')){
+  const daily=wb.worksheets.getItem('每日清单');
+  const idx=daily.getRange('A6:A75').values.findIndex(row=>row[0]==='P05');
+  if(idx<0)throw new Error('P05 row not found');
+  const row=idx+6,d=p.days.find(x=>x.id==='P05');
+  daily.getRange('H'+row).values=[[d.status]];
+  daily.getRange('I'+row).values=[[new Date(d.actual_date+'T00:00:00Z')]];
+  daily.getRange('J'+row).values=[[d.notes]];
+  daily.getRange('O'+row).values=[[d.evidence]];
+ }
  const manifest=JSON.parse(await fs.readFile(path.join(support,'workbook-preservation.json'),'utf8'));
  for(const [name,cell] of Object.entries(manifest.freeze_panes)){
   if(!cell)continue;
@@ -24,7 +34,7 @@ if(!before){
  }
  wb.recalculate();
 }
-for(const [sheetName,range,file] of [['进度总览','A1:H10','overview'],['每日清单','A1:J5','daily']]){
+for(const [sheetName,range,file] of [['进度总览','A1:H10','overview'],['每日清单','A1:J5','daily'],['每日清单','G9:J10','p05']]){
  const png=await wb.render({sheetName,range,scale:1,format:'png'});
  await fs.writeFile(path.join(support,file+(before?'-before.png':'-after.png')),new Uint8Array(await png.arrayBuffer()));
 }
