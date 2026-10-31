@@ -7,6 +7,8 @@ from langchain_core.tools import tool
 from pydantic import BaseModel, Field
 from rich import print as rprint
 
+'''模型调用联网搜索工具'''
+
 model = ChatOpenAI(
     model="qwen3.5:9b-q4_K_M",
     base_url="http://127.0.0.1:11434/v1",
